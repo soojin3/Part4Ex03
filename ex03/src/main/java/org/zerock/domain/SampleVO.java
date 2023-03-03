@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class SampleVO {
 	private Integer mno;
 	private String firstName;
-	private String LastName;
+	private String lastName;
 
 }

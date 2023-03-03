@@ -9,7 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.SampleVO;
 
@@ -61,6 +64,25 @@ public class SampleController {
 	public String check2(@PathVariable("type") String type, @PathVariable("num") int aaa) {
 		return type+""+aaa;
 		
+	}
+	
+	@GetMapping("/all/{num1}/{num2}")
+	public String check33(@PathVariable("num1") int num1,@PathVariable("num2") int num2) {//이름이 같다면 괄호 생략 가능
+		int sum=0;
+		for (int i=num1;i<=num2;i++) {
+			sum+= i;
+		}
+		return sum+"";
+		
+	}
+	
+	//클라이언트에서 서버로 sampleVO 형태의 json타입으로 데이터를 보낼때,,
+	//{"mno":123,"firstName":"홍","lastName":"길동"}
+	
+	@PostMapping(value="/getSample",produces="test/plain;charset=UTF-8")
+	public String gogo(@RequestBody SampleVO vo) {
+		log.info("수집된 값 "+vo);
+		return "gogo";
 	}
 	
 	
