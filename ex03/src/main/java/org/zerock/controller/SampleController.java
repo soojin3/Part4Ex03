@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.SampleVO;
 
@@ -79,10 +76,10 @@ public class SampleController {
 	//클라이언트에서 서버로 sampleVO 형태의 json타입으로 데이터를 보낼때,,
 	//{"mno":123,"firstName":"홍","lastName":"길동"}
 	
-	@PostMapping(value="/getSample",produces="test/plain;charset=UTF-8")
-	public String gogo(@RequestBody SampleVO vo) {
+	@PostMapping(value="/getSample")
+	public SampleVO gogo(@RequestBody SampleVO vo) {
 		log.info("수집된 값 "+vo);
-		return "gogo";
+		return vo;
 	}
 	
 	
